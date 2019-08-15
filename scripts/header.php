@@ -11,10 +11,12 @@
 
     <title>Raze Eats</title>
 </head>
+
 <body>
     <div class="jumbotron-fluid header">
-        <nav class="navbar navbar-expand-lg fixed-top position-fixed bg-dark">
-            <div class="">
+        <nav class="navbar navbar-expand-smd fixed-top position-fixed bg-dark">
+            <div class="container">
+                <a href="index.php" class="navbar-brand"> <span>Raze</span><span>Eats</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -23,16 +25,16 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item navItem"><a class="nav-link" href="index.php">Home</a> </li>
                         <li class="nav-item navItem"><a class="nav-link" href="menu.php">Menu</a> </li>
-                        <li class="nav-item navItem"><a class="nav-link" href="">Order Online</a> </li>
-                        <li class="nav-item navItem"><a class="nav-link" href="">Team</a> </li>
-                        <li class="nav-item navItem"><a class="nav-link" href="">Contact</a> </li>
+                        <li class="nav-item navItem"><a class="nav-link" href="menu.php#orderOnline"><span>Order</span><span> Online</span>   </a> </li>
+                        <li class="nav-item navItem"><a class="nav-link" href="index.php#goToTeam">Team</a> </li>
+                        <li class="nav-item navItem"><a class="nav-link" href="index.php#goToContact">Contact</a> </li>
                     </ul>
                 </div>
             </div>
         </nav>
         
-        <div class="img-fluid headerImage ">
-            <h1 class="display-4 introText">RAZE EATS</h1>
-            <span>Food Is Our Middle Name</span>
+        <div class="img-fluid headerImage dark-overlay">
+            <h1 class="display-4 introText"><span>RAZE</span> <span>EATS</span> </h1>
+            <div class="slogan"><span>Food Is Our</span><span> Middle Name</span></div>
         </div>
     </div>

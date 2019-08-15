@@ -1,0 +1,149 @@
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 18px;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+.header {
+  width: 100%;
+  color: #edebd7;
+}
+
+.header .navbar {
+  position: absolute;
+  z-index: 2;
+}
+
+.header .navbar a {
+  color: #edebd7;
+}
+
+.header .navbar a:hover {
+  cursor: pointer;
+}
+
+.header .navbar button {
+  color: #edebd7;
+  outline: none;
+}
+
+.header .headerImage {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  position: relative;
+  height: 80vh;
+}
+
+.header .headerImage .introText {
+  font-weight: 600;
+}
+
+a {
+  cursor: pointer;
+}
+
+span:nth-child(2) {
+  color: #e5b21d;
+}
+
+.carousel .carousel-indicators {
+  z-index: 1;
+}
+
+.carousel .carousel-inner {
+  z-index: 0;
+}
+
+.footer {
+  min-height: 30vh;
+}
+
+.homepage {
+  background: #edebd7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.homepage .card {
+  border: none;
+}
+
+.homepage .card .card-body {
+  -webkit-box-shadow: inset 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
+}
+
+.homepage .card .card-body .card-title {
+  text-align: center;
+  color: #423E37;
+}
+
+.homepage .card .card-body .card-text {
+  color: #6E675F;
+}
+
+.menu {
+  min-height: 100vh;
+}
+
+.carousel, .carousel-inner, .team {
+  max-height: 100vh;
+}
+
+.contact, #orderOnline {
+  min-height: 100vh;
+}
+
+#goToTeam .carousel-item {
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#goToTeam .carousel-item:nth-child(1) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1559575003-fb4ee38a747d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1559575003-fb4ee38a747d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80");
+}
+
+#goToTeam .carousel-item:nth-child(2) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1565608087341-404b25492fee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1565608087341-404b25492fee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+}
+
+#goToTeam .carousel-item:nth-child(3) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1532635211-8ec15f2ce05c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1532635211-8ec15f2ce05c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+}
+/*# sourceMappingURL=styles.css.map */
