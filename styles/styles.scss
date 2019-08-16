@@ -65,14 +65,6 @@ body{
     }
 }
 
-a{
-    cursor: pointer;
-}
-
-span:nth-child(2){
-    color: $secondary;
-}
-
 .carousel{
     .carousel-indicators{
         z-index: 1;
@@ -85,6 +77,16 @@ span:nth-child(2){
 .footer{
     min-height: 30vh;
 }
+
+a{
+    cursor: pointer;
+}
+
+span:nth-child(2){
+    color: $secondary;
+}
+
+
 //--------------------- END UNIVERSAL ELEMENTS------------------------------
 
 //-------------------TOP LEVEL PAGES------------------------
@@ -151,6 +153,19 @@ span:nth-child(2){
     }
 }
 
+.menu{
+    .card-body{
+        display: flex;
+        flex-direction: column;
+        
+        button{
+            align-self: center;
+        }
+    }
+    h4{
+        text-align: center;
+    }
+}
 //--------------END LOWER LEVEL PAGES------------------------
 
 // Small devices (landscape phones, 576px and up)

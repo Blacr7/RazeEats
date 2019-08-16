@@ -62,14 +62,6 @@ body {
   font-weight: 600;
 }
 
-a {
-  cursor: pointer;
-}
-
-span:nth-child(2) {
-  color: #e5b21d;
-}
-
 .carousel .carousel-indicators {
   z-index: 1;
 }
@@ -80,6 +72,14 @@ span:nth-child(2) {
 
 .footer {
   min-height: 30vh;
+}
+
+a {
+  cursor: pointer;
+}
+
+span:nth-child(2) {
+  color: #e5b21d;
 }
 
 .homepage {
@@ -145,5 +145,25 @@ span:nth-child(2) {
 #goToTeam .carousel-item:nth-child(3) {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1532635211-8ec15f2ce05c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1532635211-8ec15f2ce05c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+}
+
+.menu .card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.menu .card-body button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.menu h4 {
+  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */
