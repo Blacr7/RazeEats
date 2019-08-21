@@ -17,6 +17,10 @@ body{
     font-size: 18px;
     overflow-x: hidden;
     width: 100vw;
+
+    section{
+        padding-top: .5rem;
+    }
 }
 
 .header{
@@ -86,7 +90,6 @@ span:nth-child(2){
     color: $secondary;
 }
 
-
 //--------------------- END UNIVERSAL ELEMENTS------------------------------
 
 //-------------------TOP LEVEL PAGES------------------------
@@ -128,7 +131,7 @@ span:nth-child(2){
 }
 
 .contact, #orderOnline{
-    min-height: 100vh;
+    min-height: 60vh;
 }
 
 #goToTeam{
@@ -157,13 +160,36 @@ span:nth-child(2){
     .card-body{
         display: flex;
         flex-direction: column;
-        
+
+        .text{
+            margin: .5rem auto;
+        }
+
+        .prices{
+            display: flex;
+            justify-content: space-between;
+        }
+
         button{
             align-self: center;
         }
     }
+
     h4{
         text-align: center;
+    }
+}
+
+#orderOnline{
+    color: #fff;
+    .onlineTop{
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+    
+    .table{
+        margin-bottom: 0;
     }
 }
 //--------------END LOWER LEVEL PAGES------------------------

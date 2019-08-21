@@ -8,6 +8,10 @@ body {
   width: 100vw;
 }
 
+body section {
+  padding-top: .5rem;
+}
+
 .header {
   width: 100%;
   color: #edebd7;
@@ -121,7 +125,7 @@ span:nth-child(2) {
 }
 
 .contact, #orderOnline {
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 #goToTeam .carousel-item {
@@ -157,6 +161,19 @@ span:nth-child(2) {
           flex-direction: column;
 }
 
+.menu .card-body .text {
+  margin: .5rem auto;
+}
+
+.menu .card-body .prices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .menu .card-body button {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -165,5 +182,26 @@ span:nth-child(2) {
 
 .menu h4 {
   text-align: center;
+}
+
+#orderOnline {
+  color: #fff;
+}
+
+#orderOnline .onlineTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#orderOnline .table {
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=styles.css.map */
