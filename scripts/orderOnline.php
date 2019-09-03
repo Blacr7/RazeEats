@@ -1,33 +1,59 @@
 <section id="orderOnline" class="bg-dark ">
     <div class="container">
-        <div class="onlineTop">
+        <div class="onlineTop py-3">
             <h4>My Order</h4>
-            <span class="">(0) items</span>
+            <span class="">(<?= isset($_SESSION['shoppingCart']) ? count($_SESSION['shoppingCart']) : 0 ?>) items</span>
         </div>
         
-        <table id="onlineTable" class="table table-dark table-striped table-sm table-responsive-sm">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Raze Dog</td>
-                    <td>1</td>
-                    <td>9.98</td>
-                    <td>9.98</td>
-                    <td><button type="button" class="btn btn-danger">Remove</button></td>
-                </tr>
+        <div class="table-responsive">
+            <table id="onlineTable" class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        if(isset($_SESSION['shoppingCart'])){
+                            foreach ($_SESSION['shoppingCart'] as $key => $value) {
+                    ?>
+                        <tr>
+                            <td><?=$_SESSION['shoppingCart'][$value['id']]['name']?></td>
+                            <td><?=$_SESSION['shoppingCart'][$value['id']]['quantity']?></td>
+                            <td><?=$_SESSION['shoppingCart'][$value['id']]['price']?></td>
+                            <td><?=$_SESSION['shoppingCart'][$value['id']]['price']*$_SESSION['shoppingCart'][$value['id']]['quantity']?></td>
+                            <td>
+                                <a href="menu.php?action=delete&id=<?= $value['id']?>">
+                                    <button type="button" class="btn-danger"?>Remove</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                            }
+                        }
+                    ?>
 
-                <tr>
-                    <td><button type="button" class="btn btn-success">Order Now</button></td>
-                </tr>
-            </tbody>
-        </table>
+                    <tr>
+                        <?php 
+                            if(isset($_SESSION['shoppingCart']) && !empty($_SESSION['shoppingCart'])){
+                        ?>
+                            <td class="orderNow" colspan="5"><button type="button" class="btn btn-success">Order Now</button></td>
+                        <?php
+                            }else{
+                        ?>
+                            <td class="orderNow" colspan="5"><button type="button" class="btn btn-secondary">Order Now</button></td>
+                        <?php
+                            }
+                        ?>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
     </div>
 </section>

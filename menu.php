@@ -1,4 +1,61 @@
-<?php require 'scripts/header.php'; ?>
+<?php 
+    session_start();
+    $itemIds = array();
+    $currentId = filter_input(INPUT_GET, 'id');
+    //session_destroy();
+    
+    //Print_r wrapped in <pre> tags
+    function customPrint($array){
+        echo '<pre>';
+        print_r($array);
+        echo '</pre>';
+    }
+
+    if(filter_input(INPUT_POST, 'add')){
+        if(isset($_SESSION['shoppingCart'])){
+            $count = count($_SESSION['shoppingCart']);
+            $itemIds = array_column($_SESSION['shoppingCart'], 'id');
+
+            if(!in_array(filter_input(INPUT_GET, 'id'), $itemIds)){
+                $_SESSION['shoppingCart'][$currentId] = array(
+                    'id'=>filter_input(INPUT_GET, 'id'),
+                    'name'=>filter_input(INPUT_POST, 'name'),
+                    'price'=>filter_input(INPUT_POST, 'price'),
+                    'quantity'=>filter_input(INPUT_POST, 'quantity')
+                );
+            }else{
+                for($i = 0; $i < count($itemIds); $i++){
+                    if($itemIds[$i] == filter_input(INPUT_GET, 'id')){
+                        $_SESSION['shoppingCart'][$currentId]['quantity'] += filter_input(INPUT_POST, 'quantity');
+                    }
+                }
+            }
+
+        }else{
+            $_SESSION['shoppingCart'][$currentId] = array(
+                'id'=>filter_input(INPUT_GET, 'id'),
+                'name'=>filter_input(INPUT_POST, 'name'),
+                'price'=>filter_input(INPUT_POST, 'price'),
+                'quantity'=>filter_input(INPUT_POST, 'quantity'),
+            );
+        }
+    }
+
+    if(filter_input(INPUT_GET, 'action') === 'delete'){
+        foreach ($_SESSION['shoppingCart'] as $key => $value) {
+            customPrint($value['id']);
+            if($value['id'] === filter_input(INPUT_GET, 'id')){
+                unset($_SESSION['shoppingCart'][$key]);
+            }
+        }
+    }
+    require 'scripts/header.php'; 
+
+    $connect = mysqli_connect('localhost', 'root', '', 'razeeatsmenu');
+    $query = 'SELECT * FROM menu ORDER by id ASC';
+
+    $result = mysqli_query($connect, $query);
+?>
 
 <section class="menu bg-dark ">
     <div class="container">
@@ -6,89 +63,43 @@
         <h2 class="text-white text-center pt-4">Menu</h2>
 
         <div class="card-deck flex-sm-column">
+            <?php
+                if($result){
+                    if(mysqli_num_rows($result)>0){
+                        // Generate the form and a card for every Row in the $result table
+                        while($item = mysqli_fetch_assoc($result)){
+                        ?>
+                            <form method="post" action="menu.php?action=add&id=<?=$item['id']; ?>" >
+                                <div class="card m-2">
+                                    <img class="card-img-top" src="<?= $item['Image'];?>" alt="">
+                                    
+                                    <div class="card-header">
+                                        <h4 class="card-title"><?=$item['Name']?></h4>
+                                    </div>
 
-            <div class="card m-2">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1477617722074-45613a51bf6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
-                
-                <div class="card-header">
-                    <h4 class="card-title">Raze Burger</h4>
-                    
-                </div>
-                
-                <div class="card-body text-dark">
+                                    <div class="card-body text-dark">
+                                        <span class="text"><?= $item['Description']?></span>
+                                        <input class="text form-control" type="text" name="quantity" id="<?= $item['Name'] . " quantity"?>" value=<?= $item['Quantity'] ?>>
+                                        <input type="hidden" name="name" value="<?=$item['Name']?>">
+                                        <input type="hidden" name="price" value="<?=$item['Price']?>">
 
-                    <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quaerat quas distinctio? Possimus, aspernatur molestias!</span>
-                    <input class="text" type="number" name="quantity" id="quantity" value="1">
-                    <button type="button" class="btn btn-dark text">Add To Cart</button>
-                    <div class="prices">
-                        <span class="">$9.98</span>
-                        <span class="">$9.98</span>  
-                    </div>
-                </div>
+                                        <input class="btn btn-dark text" name="add" type="submit" value="Add To Cart">
 
-            </div>
-
-            <div class="card m-2">
-
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1547496502-affa22d38842?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1168&q=80" alt="">
-                
-                <div class="card-body">
-                    <h4 class="card-title">Raze Salad</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet con sec tetur adipisicing elit.</p>
-                    <p class="card-text">Lorem ipsum dolor sit amet, con sec tetur adipisicing elit. Veritatis, nostrum.</p>
-                    <input class="text" type="number" name="quantity" id="quantity" value="1">
-                    <button type="button" class="btn btn-dark text">Add To Cart</button>
-                    <div class="prices">
-                        <span class="">$9.98</span>
-                        <span class="">$9.98</span>  
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card m-2">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1536521642388-441263f88a61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Raze Dog</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ad eaque natus, atque sunt ipsa maxime velit saepe, adipisci ipsam nesciunt vero odit? Quia.</p>
-                    <p class="card-text"></p>
-                    <input class="text" type="number" name="quantity" id="quantity" value="1">
-                    <button type="button" class="btn btn-dark text">Add To Cart</button>
-                    <div class="prices">
-                        <span class="">$9.98</span>
-                        <span class="">$9.98</span>  
-                    </div>
-                </div>
-            </div>
-
-            <div class="card m-2">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Raze of the Day</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque a delectus error asperiores id vitae tenetur distinctio?</p>
-                    <input class="text" type="number" name="quantity" id="quantity" value="1">
-                    <button type="button" class="btn btn-dark text">Add To Cart</button>
-                    <div class="prices">
-                        <span class="">$9.98</span>
-                        <span class="">$9.98</span>  
-                    </div>
-                </div>
-            </div>
-
-            <div class="card m-2">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Raze Special</h4>
-                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt earum molestias ex, harum tempora mollitia. Ex, veniam! A temporibus hic quasi. Omnis, expedita consequuntur!</p>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro iusto unde optio.</p>
-                    <input class="text" type="number" name="quantity" id="quantity" value="1">
-                    <button type="button" class="btn btn-dark text">Add To Cart</button>
-                    <div class="prices">
-                        <span class="">$9.98</span>
-                        <span class="">$9.98</span>  
-                    </div>
-                </div>
-            </div>
+                                        <div class="prices">
+                                            <!-- Display the Price of the Current Item -->
+                                            <span class="">$<?= $item['Price']; ?></span>
+                                            
+                                            <!-- Display the total price of the current Quantity of items -->
+                                            <span class="">$<?= isset($_SESSION['shoppingCart'][$item['id']]) ? $item['Price']*$_SESSION['shoppingCart'][$item['id']]['quantity'] . " ({$_SESSION['shoppingCart'][$item['id']]['quantity']})" : $item['Price']*$item['Quantity'] . " ({$item['Quantity']})" ?></span>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        <?php
+                        }
+                    }
+                }
+            ?>
         </div>
     </div>
 </section>

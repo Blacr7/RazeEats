@@ -1,0 +1,4 @@
+ALTER TABLE Menu
+ADD Price DECIMAL NOT NULL;
+
+SELECT * FROM menu;

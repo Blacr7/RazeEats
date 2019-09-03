@@ -3,7 +3,7 @@
         {
             "askForPassword": false,
             "connectionTimeout": 30,
-            "database": "Raze Eats Menu",
+            "database": "RazeEatsMenu",
             "dialect": "MySQL",
             "name": "RazeEats",
             "port": 3306,

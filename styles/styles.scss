@@ -180,14 +180,29 @@ span:nth-child(2){
     }
 }
 
+.paymentSection{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    #payment{
+        height: 80vh;
+    }
+}
+
 #orderOnline{
     color: #fff;
+
     .onlineTop{
         display: flex;
         flex-direction: row; 
         justify-content: space-between;
     }
-    
+
+    .orderNow{
+        text-align: center;
+    }
     .table{
         margin-bottom: 0;
     }
