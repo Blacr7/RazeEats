@@ -19,37 +19,54 @@
                 <tbody>
                     <?php 
                         if(isset($_SESSION['shoppingCart'])){
+                            $total = 0;
                             foreach ($_SESSION['shoppingCart'] as $key => $value) {
+                                $currentItem = $_SESSION['shoppingCart'][$value['id']];
+                                $total += $_SESSION['shoppingCart'][$value['id']]['price']*$_SESSION['shoppingCart'][$value['id']]['quantity'];
                     ?>
                         <tr>
-                            <td><?=$_SESSION['shoppingCart'][$value['id']]['name']?></td>
-                            <td><?=$_SESSION['shoppingCart'][$value['id']]['quantity']?></td>
-                            <td><?=$_SESSION['shoppingCart'][$value['id']]['price']?></td>
-                            <td><?=$_SESSION['shoppingCart'][$value['id']]['price']*$_SESSION['shoppingCart'][$value['id']]['quantity']?></td>
+                            <td><?=$currentItem['name']?></td>
+                            <td><?=$currentItem['quantity']?></td>
+                            <td><?="$" . $currentItem['price']?></td>
+                            <td><?="$" . $currentItem['price'] * $currentItem['quantity']?></td>
                             <td>
                                 <a href="menu.php?action=delete&id=<?= $value['id']?>">
                                     <button type="button" class="btn-danger"?>Remove</button>
                                 </a>
                             </td>
                         </tr>
+
+                        
                     <?php
                             }
                         }
                     ?>
+                        <tr class="grandTotal ">
+                            <td colspan="3">Total</td>
+                            <td colspan="2"><?= "$$total";?></td>
+                        </tr>
 
-                    <tr>
+                    
                         <?php 
                             if(isset($_SESSION['shoppingCart']) && !empty($_SESSION['shoppingCart'])){
                         ?>
-                            <td class="orderNow" colspan="5"><button type="button" class="btn btn-success">Order Now</button></td>
+                            <tr>
+                                <td class="orderNow" colspan="5"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#payment">Order Now</button></td>
+                            </tr> 
                         <?php
                             }else{
-                        ?>
-                            <td class="orderNow" colspan="5"><button type="button" class="btn btn-secondary">Order Now</button></td>
+                        ?>  
+                            <tr>
+                                <td colspan="5">Your Carts Empty, Add some Items!</td>
+                            </tr>
+                            <tr>
+                                <td class="orderNow" colspan="5"><button type="button" class="btn btn-secondary">Order Now</button></td>
+                            </tr>
+                            
                         <?php
                             }
                         ?>
-                    </tr>
+                    
 
                 </tbody>
             </table>

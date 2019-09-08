@@ -43,14 +43,14 @@
 
     if(filter_input(INPUT_GET, 'action') === 'delete'){
         foreach ($_SESSION['shoppingCart'] as $key => $value) {
-            customPrint($value['id']);
             if($value['id'] === filter_input(INPUT_GET, 'id')){
                 unset($_SESSION['shoppingCart'][$key]);
             }
         }
     }
-    require 'scripts/header.php'; 
 
+    require 'scripts/header.php'; 
+    require 'scripts/payment.php';
     $connect = mysqli_connect('localhost', 'root', '', 'razeeatsmenu');
     $query = 'SELECT * FROM menu ORDER by id ASC';
 
