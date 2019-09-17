@@ -43,7 +43,7 @@
                     ?>
                         <tr class="grandTotal ">
                             <td colspan="3">Total</td>
-                            <td colspan="2"><?= "$$total";?></td>
+                            <td colspan="2"><?= isset($total) ? "$$total" : "$0";?></td>
                         </tr>
 
                     
@@ -57,7 +57,7 @@
                             }else{
                         ?>  
                             <tr>
-                                <td colspan="5">Your Carts Empty, Add some Items!</td>
+                                <td colspan="5">Your Cart's Empty, Add some Items!</td>
                             </tr>
                             <tr>
                                 <td class="orderNow" colspan="5"><button type="button" class="btn btn-secondary">Order Now</button></td>

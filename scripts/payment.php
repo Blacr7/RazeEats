@@ -1,5 +1,5 @@
 <section class="paymentSection bg-dark ">
-    <form class="container modal" id="payment">
+    <form class="modal" method="post" action="menu.php?action=finalize" id="payment">
         <div class="form-group">
             <div class="text-white">
                 <label for="FullName">Full Name</label>
@@ -50,6 +50,8 @@
             </div>  
         </div>
 
-        <button class="btn btn-success mb-4 px-4" type="submit">Finalize</button>
+        <input type="submit" name="finalize" class="btn btn-success mb-4 px-4">
+        <button type="button" class="btn btn-secondary mb-4 px-4" data-dismiss="modal">Continue Shopping</button>
+        
     </form>
 </section>

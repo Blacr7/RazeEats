@@ -49,11 +49,20 @@
         }
     }
 
+    if(filter_input(INPUT_POST, 'finalize')){
+        session_destroy();
+        echo '<script language="javascript"> ';
+        echo 'alert("Thank you for your purchase")';
+        echo  '</script>';
+        
+    }
+
     require 'scripts/header.php'; 
     require 'scripts/payment.php';
     $connect = mysqli_connect('localhost', 'root', '', 'razeeatsmenu');
     $query = 'SELECT * FROM menu ORDER by id ASC';
 
+    
     $result = mysqli_query($connect, $query);
 ?>
 
@@ -62,38 +71,38 @@
 
         <h2 class="text-white text-center pt-4">Menu</h2>
 
-        <div class="card-deck flex-sm-column">
+        <div class="card-deck flex-xl-row column flex-column ">
             <?php
                 if($result){
                     if(mysqli_num_rows($result)>0){
                         // Generate the form and a card for every Row in the $result table
                         while($item = mysqli_fetch_assoc($result)){
                         ?>
-                            <form method="post" action="menu.php?action=add&id=<?=$item['id']; ?>" >
-                                <div class="card m-2">
+                            <form class="foodItems" method="post" action="menu.php?action=add&id=<?=$item['id']; ?>" >
+                                <div class="card my-3">
                                     <img class="card-img-top" src="<?= $item['Image'];?>" alt="">
-                                    
-                                    <div class="card-header">
-                                        <h4 class="card-title"><?=$item['Name']?></h4>
-                                    </div>
-
-                                    <div class="card-body text-dark">
-                                        <span class="text"><?= $item['Description']?></span>
-                                        <input class="text form-control" type="text" name="quantity" id="<?= $item['Name'] . " quantity"?>" value=<?= $item['Quantity'] ?>>
-                                        <input type="hidden" name="name" value="<?=$item['Name']?>">
-                                        <input type="hidden" name="price" value="<?=$item['Price']?>">
-
-                                        <input class="btn btn-dark text" name="add" type="submit" value="Add To Cart">
-
-                                        <div class="prices">
-                                            <!-- Display the Price of the Current Item -->
-                                            <span class="">$<?= $item['Price']; ?></span>
-                                            
-                                            <!-- Display the total price of the current Quantity of items -->
-                                            <span class="">$<?= isset($_SESSION['shoppingCart'][$item['id']]) ? $item['Price']*$_SESSION['shoppingCart'][$item['id']]['quantity'] . " ({$_SESSION['shoppingCart'][$item['id']]['quantity']})" : $item['Price']*$item['Quantity'] . " ({$item['Quantity']})" ?></span>  
+                                        
+                                        <div class="card-header">
+                                            <h4 class="card-title"><?=$item['Name']?></h4>
                                         </div>
-                                    </div>
-                                </div>
+
+                                        <div class="card-body text-dark">
+                                            <span class="text"><?= $item['Description']?></span>
+                                            <input class="text form-control" type="text" name="quantity" id="<?= $item['Name'] . " quantity"?>" value=<?= $item['Quantity'] ?>>
+                                            <input type="hidden" name="name" value="<?=$item['Name']?>">
+                                            <input type="hidden" name="price" value="<?=$item['Price']?>">
+
+                                            <input class="btn btn-dark text" name="add" type="submit" value="Add To Cart">
+
+                                            <div class="prices">
+                                                <!-- Display the Price of the Current Item -->
+                                                <span class="">$<?= $item['Price']; ?></span>
+                                                
+                                                <!-- Display the total price of the current Quantity of items -->
+                                                <span class="">$<?= isset($_SESSION['shoppingCart'][$item['id']]) ? $item['Price']*$_SESSION['shoppingCart'][$item['id']]['quantity'] . " ({$_SESSION['shoppingCart'][$item['id']]['quantity']})" : $item['Price']*$item['Quantity'] . " ({$item['Quantity']})" ?></span>  
+                                            </div>
+                                        </div>
+                                    </div>        
                             </form>
                         <?php
                         }
