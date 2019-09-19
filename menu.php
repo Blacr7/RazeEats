@@ -59,7 +59,9 @@
 
     require 'scripts/header.php'; 
     require 'scripts/payment.php';
-    $connect = mysqli_connect('localhost', 'root', '', 'razeeatsmenu');
+
+    //mysql://b6358edcee6a94:92247908@us-cdbr-iron-east-02.cleardb.net/heroku_960d9c70cf03fa6?reconnect=true
+    $connect = mysqli_connect('us-cdbr-iron-east-02.cleardb.net', 'b6358edcee6a94', '92247908', 'heroku_960d9c70cf03fa6');
     $query = 'SELECT * FROM menu ORDER by id ASC';
 
     
