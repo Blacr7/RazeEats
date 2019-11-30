@@ -15,19 +15,19 @@
 <body>
     <div class="jumbotron-fluid header">
         <nav class="navbar navbar-expand-smd fixed-top position-fixed bg-dark">
-            <div class="container">
+            <div class="container navbar-expand-lg">
                 <a href="index.php" class="navbar-brand"> <span>Raze</span><span>Eats</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
                 
-                <div class="collapse navbar-collapse" id="navCollapse">
+                <div class="navbar-collapse collapse-lg collapse" id="navCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item navItem"><a class="nav-link" href="index.php">Home</a> </li>
-                        <li class="nav-item navItem"><a class="nav-link" href="menu.php">Menu</a> </li>
-                        <li class="nav-item navItem"><a class="nav-link" href="menu.php#orderOnline"><span>Order</span><span> Online</span>   </a> </li>
                         <li class="nav-item navItem"><a class="nav-link" href="index.php#goToTeam">Team</a> </li>
                         <li class="nav-item navItem"><a class="nav-link" href="index.php#goToContact">Contact</a> </li>
+                        <li class="nav-item navItem"><a class="nav-link" href="menu.php#menu">Menu</a> </li>
+                        <li class="nav-item navItem"><a class="nav-link" href="menu.php#orderOnline"><span>Order</span><span> Online</span>   </a> </li>                 
                     </ul>
                 </div>
             </div>

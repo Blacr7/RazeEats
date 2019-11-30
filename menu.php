@@ -68,7 +68,7 @@
     $result = mysqli_query($connect, $query);
 ?>
 
-<section class="menu bg-dark ">
+<section class="menu bg-dark" id="menu">
     <div class="container">
 
         <h2 class="text-white text-center pt-4">Menu</h2>
@@ -88,13 +88,13 @@
                                             <h4 class="card-title"><?=$item['Name']?></h4>
                                         </div>
 
-                                        <div class="card-body text-dark">
+                                        <div class="card-body">
                                             <span class="text"><?= $item['Description']?></span>
                                             <input class="text form-control" type="text" name="quantity" id="<?= $item['Name'] . " quantity"?>" value=<?= $item['Quantity'] ?>>
                                             <input type="hidden" name="name" value="<?=$item['Name']?>">
                                             <input type="hidden" name="price" value="<?=$item['Price']?>">
 
-                                            <input class="btn btn-dark text" name="add" type="submit" value="Add To Cart">
+                                            <input class="btn btn-success text" name="add" type="submit" value="Add To Cart">
 
                                             <div class="prices">
                                                 <!-- Display the Price of the Current Item -->

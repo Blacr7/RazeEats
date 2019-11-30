@@ -105,6 +105,22 @@ body{
 
 .footer{
     min-height: 30vh;
+
+    .innerFooter{
+        display: flex;
+        color:#ffffff;
+        align-self: center ;
+        justify-self: center;
+        flex-wrap: wrap;
+    
+        .madeBy{
+            text-align: right;
+            
+            a{
+                display: block;
+            }
+        }
+    }    
 }
 
 a{
@@ -113,6 +129,29 @@ a{
 
 span:nth-child(2){
     color: $secondary;
+}
+
+.navbar-collapse{
+    flex-grow: unset;
+}
+
+.card{
+    color: #ffffff;
+
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 14px;
+    .card-body, .card-header{
+        background: #343A40;
+
+        .card-title{
+            text-align: center;
+        }
+
+        .card-text{
+            color: $primary;
+        }
+    }
 }
 
 //--------------------- END UNIVERSAL ELEMENTS------------------------------
@@ -124,24 +163,7 @@ span:nth-child(2){
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-	.card{
-		border: none;
-		.card-body{
-			box-shadow: inset 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
-
-			.card-title{
-				text-align: center;
-				color: $tertiary;
-			}
-
-			.card-text{
-				color: $quaternary;
-			}
-		}
-	}
-    
-    
+    color: #ffffff;
 }
 
 .menu{
@@ -235,6 +257,9 @@ span:nth-child(2){
         margin-bottom: 0;
     }
 }
+
+
+    
 //--------------END LOWER LEVEL PAGES------------------------
 
 // Small devices (landscape phones, 576px and up)
