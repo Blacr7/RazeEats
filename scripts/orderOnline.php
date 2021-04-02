@@ -43,7 +43,18 @@
                     ?>
                         <tr class="grandTotal ">
                             <td colspan="3">Total</td>
-                            <td colspan="2"><?= isset($total) ? "$$total" : "$0";?></td>
+                            <td colspan="1"><?= isset($total) ? "$$total" : "$0";?></td>
+                            <td colspan="1">
+                                <?php 
+                                    if(isset($_SESSION['shoppingCart']) && !empty($_SESSION['shoppingCart']) && count($_SESSION['shoppingCart']) > 1){
+                                ?>
+                                        <a href="menu.php?action=removeAll">
+                                            <button type="button" class="btn-danger">Remove All</button>
+                                        </a>
+                                <?php
+                                    }
+                                ?>
+                            </td>
                         </tr>
 
                     

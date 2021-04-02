@@ -34,7 +34,14 @@
         </nav>
         
         <div class="img-fluid headerImage dark-overlay">
-            <h1 class="display-4 introText"><span>RAZE</span> <span>EATS</span> </h1>
+            <h1 class="headerImageText"><span>RAZE</span> <span>EATS</span> </h1>
             <div class="slogan"><span>Food Is Our</span><span> Middle Name</span></div>
         </div>
+
+        <span  id="scrollTo" class="scrollButton">
+            <a href="#scrollTo">
+                <span class="mouse">
+                </span>
+            </a>
+        </span>
     </div>

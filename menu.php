@@ -49,12 +49,22 @@
         }
     }
 
-    if(filter_input(INPUT_POST, 'finalize')){
+    if(filter_input(INPUT_POST, 'finalize') && isset($_SESSION['shoppingCart'])){
+        foreach ($_SESSION['shoppingCart'] as $key => $value) {
+            unset($_SESSION['shoppingCart'][$key]);
+        }
         session_destroy();
         echo '<script language="javascript"> ';
         echo 'alert("Thank you for your purchase")';
-        echo  '</script>';
+        echo '</script>';
         
+    }
+
+    if(filter_input(INPUT_GET, 'action') === 'removeAll' && isset($_SESSION['shoppingCart'])){
+        foreach ($_SESSION['shoppingCart'] as $key => $value) {
+            unset($_SESSION['shoppingCart'][$key]);
+        }
+        session_destroy();
     }
 
     require 'scripts/header.php'; 
@@ -80,7 +90,7 @@
                         // Generate the form and a card for every Row in the $result table
                         while($item = mysqli_fetch_assoc($result)){
                         ?>
-                            <form class="foodItems" method="post" action="menu.php?action=add&id=<?=$item['id']; ?>" >
+                            <form target="_top" class="foodItems" method="post" action="menu.php?action=add&id=<?=$item['id']; ?>" >
                                 <div class="card my-3">
                                     <img class="card-img-top" src="<?= $item['Image'];?>" alt="">
                                         

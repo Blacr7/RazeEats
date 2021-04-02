@@ -4,23 +4,30 @@ $primary: #edebd7;
 $secondary: #e5b21d;
 $tertiary: #423E37;
 $quaternary: #6E675F;
-
+$homepagePrimary: #343A40;
+$homepageSecondary: #eeeeee; //#E2EADF;
 //----------------------------END VARIABLES-------------
 
 //------------------------UNIVERSAL ELEMENTS------------------------------
 
 *{
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    position: relative;
     scroll-behavior: smooth;
+    
 }
 
 body{
     font-size: 18px;
     overflow-x: hidden;
     width: 100vw;
-
-    section{
-        padding-top: 1em;
-    }
+    background-image: url('../images/papyrus-dark.png');
+    background-repeat: repeat;
+    background-color: #343a40;
 }
 
 .header{
@@ -29,65 +36,146 @@ body{
 
     .navbar{
         position: absolute;
-        z-index: 2;
+        z-index: 20;
 
         a{
-            color: $primary;
+            color: #eeeeee;
+            margin: auto 1em;
+            transition: color .2s;
 
             &:hover{
+                color: $secondary;
                 cursor: pointer;
             }
         }
 
         button{
-            color: $primary;  
+            color: #eeeeee;  
             outline: none;
         }
     }
 
-    
-    .headerImage{
-        width:100%;
-        background-position: center ;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
-
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-wrap: wrap;
-        flex-direction: column;
+    .scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 5vh;
+        left: 0;
+        right: 0;
         text-align: center;
-        position: relative;
-        height: 80vh;
+
+        a{  
+            display: inline-block;
+            width: 35px;
+	        height: 55px;
+            border: 2px solid $primary;
+            border-radius: 1.5em;
+        }
         
-        .introText{
-            font-weight: 600;
+        .mouse{
+            position: absolute;;
+            width: 8px;
+            height: 8px;
+            margin: -4px 0 0 -4px;
+            background: $primary;
+            border-radius: 50%;
+            animation: ani-mouse 2s linear infinite;
         }
     }
 }
 
+.headerImage{
+    width:100%;
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    height: 70vh;
+    
+    .headerImageText{
+        color: $primary;
+        font-size: 4rem;
+        font-weight: 900;
+        font-style: italic;
+    }
+}
+
+
 .carousel{
+    width: 100%;
+
     .carousel-inner{
+        height: 100%;
         margin: auto;
+
         .carousel-item{
-            height: auto;
-            background-repeat: no-repeat;
-            text-align: center;
+            height: 100%;
 
             .food{
                 height: 100%;
             }
+        }
+    }
 
-            img{
-                height: 100vh;
-                object-fit: cover;
-                display: inline-block;
-                margin: auto;
-                opacity: .5;
+    .carousel-item-next, .carousel-item-prev, .carousel-item.active{
+        display: grid;
+    }
+
+    .team{
+
+        .carousel-item{
+            grid-template-columns: minmax(40%, 45%) 1fr;
+
+            .carouselText{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+
+                .card-title{
+                    font-size: 2em;
+                    font-style: italic;
+                    font-weight: 900;
+                    margin-bottom: none;
+                    margin-top: 1em;
+                }
+
+                .card-text{
+                    text-align: justify;
+                    margin: auto 2em;
+                    font-size: 1.2rem;
+                }
             }
+        }
+        
+        .img{
+            opacity: .5;
+            width: 100%;
+            background-position: top center;
+            background-size: cover;
+        }
+
+        .imgOne{
+            background-image: url('https://images.unsplash.com/photo-1559575003-fb4ee38a747d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80');
+        }
+
+        .imgTwo{
+            background-image: url('https://images.unsplash.com/photo-1565608087341-404b25492fee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
+        }
+
+        .imgThree{
+            background-image: url('https://images.unsplash.com/photo-1532635211-8ec15f2ce05c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
+        }
+
+        p{
+            
         }
     }
 
@@ -104,23 +192,71 @@ body{
 }
 
 .footer{
-    min-height: 30vh;
+    min-height: 50vh;
 
-    .innerFooter{
-        display: flex;
-        color:#ffffff;
-        align-self: center ;
-        justify-self: center;
-        flex-wrap: wrap;
+    padding: 1em 0;
+    background-color: $homepagePrimary;
+    color: $primary;
     
-        .madeBy{
-            text-align: right;
-            
-            a{
-                display: block;
+    place-items: center;
+    
+    .socialMedia{
+        text-align: center;
+
+        .logo{
+            font-size: 3em;
+        }
+
+        .innerSocialMedia{
+            padding: 1em 0;
+
+            li{
+                display: inline;
+                padding: 1em; 
             }
         }
-    }    
+    }
+
+    .businessHours{
+        margin: 2em auto;
+        .header{
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .hours{
+            width: 50%;
+            margin: auto;
+            padding: 1em 0 0;
+
+            .innerHours{
+                width: 100%;
+                line-height: 1.4em;
+                display: inline-flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+        }
+    }
+    
+    li, a, .copyRight{
+        color: #eeeeee;
+        transition: color .2s;
+    }
+    
+    a{
+        &:hover{
+            color: $secondary;
+        }
+    }
+
+    .contactUs{
+        grid-column: 1/6;
+        display: inline-flex;
+        width: 100vw;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
 }
 
 a{
@@ -159,11 +295,92 @@ span:nth-child(2){
 //-------------------TOP LEVEL PAGES------------------------
 
 .homepage{
-    background: $primary;
+    background-image: url('../images/papyrus-dark.png');
+    background-repeat: repeat;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    color: #ffffff;
+    color: $homepageSecondary;
+
+    .container{
+        background-color: $homepagePrimary;
+        box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.5);
+        
+        height: 100vh;
+        max-width: 100%;
+        padding: 0;
+        z-index: 3;
+
+        .topSection, .bottomSection{
+            display: grid;
+            height: 50%;
+
+            .image{
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .aboutUsText{
+                background-color: #343a40;
+                display: grid;
+                padding: 1em;
+                place-items: center;
+                text-align: center;
+                
+
+                p{
+                    margin: 0 1em;
+                }
+            }
+        }
+
+        .topSection{
+            grid-template-columns: minmax(150px, 1fr) 60%;
+
+            .image{
+                background-image: url('../images/Spices.jpg');
+            }
+
+            .btn{
+                color: $homepageSecondary;
+                border: 2px solid;
+                font-weight: 700;
+                font-size: 1em;
+                padding: 1em;
+                transition: background-color .5s, color .5s;
+                
+                &:hover{
+                    cursor: pointer;
+                    background: $homepageSecondary;
+                    color: $homepagePrimary;
+                }
+            }
+        }
+
+        .bottomSection{
+            grid-template-columns: minmax(150px, 40%) 1fr;
+
+            .image{
+                background-image: url('https://images.unsplash.com/photo-1466027575040-12134f1397fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            }
+        }
+    }
+
+    h3{
+        color: $primary;
+    }
+
+    .ourTeam{
+        color: $primary;
+        height: 100%;
+    }
+    
+    p{
+        color: $homepageSecondary;
+        line-height: 2rem;
+        text-align: left;
+    }
 }
 
 .menu{
@@ -212,12 +429,54 @@ span:nth-child(2){
 //----------------END TOP LEVEL PAGES------------------------
 
 //-------------------LOWER LEVEL PAGES------------------------
-.carousel, .carousel-inner, .team{
-    max-height: 80vh;
-}
-
 .contact, #orderOnline{
     min-height: 60vh;
+}
+
+.contact{
+    display: grid;
+    grid-template-columns: repeat(1fr, 2);
+    color: $homepageSecondary;
+
+    .contactSeparator{
+        padding-top: 1em;
+        margin: 1em 4vw;
+    }
+
+    input, textarea{
+        background-color: $homepagePrimary;
+        color: $homepageSecondary;
+        border-color: $homepagePrimary;
+
+        &::placeholder, &:focus{
+            color: $homepageSecondary;
+            background-color: $homepagePrimary;
+        }
+    }
+
+    input:-webkit-autofill{
+        background-color: $homepagePrimary;
+        color: $homepageSecondary;
+        border-color: $homepagePrimary;
+    }
+
+    .form-group{
+        padding-bottom: 1em;
+        margin-bottom: 0;
+    }
+
+    .submit{
+        input{
+            width: 5em;
+            height: 3em;
+            margin: auto;
+        }
+    }
+
+    h2{
+        text-align: center;
+        font-size: 2.5em;
+    }
 }
 
 .paymentSection{
@@ -262,23 +521,137 @@ span:nth-child(2){
     
 //--------------END LOWER LEVEL PAGES------------------------
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
+// Small devices (landscape phones, 576px and down)
+@media (max-width: 576px){
+    body{
+        font-size: 16px;
+    }
+    .header{
+        .scrollButton{
+            bottom: 10vh;
+        }
+    }
+    .headerImage{
+        height: 100vh;
+    }
+}
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {  }
+// Medium devices (tablets, 768px and down)
+@media (max-width: 768px){  
+    
+    .carousel{
+        .team{
+            .carousel-item{
+                grid-template-columns: 1fr;
+                .carouselText{
+                    z-index: 2;
+                }
+            }
+
+            .img{
+                opacity: .3;
+                position: absolute;
+                margin: auto;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+    
+    .homepage{
+        .container{
+            .topSection, .bottomSection{
+                grid-template-columns: 1fr;
+                height: 50%;
+
+                .image{
+                    display: none;
+                }
+            }
+        }
+
+        h3{
+            font-size: 2em;
+        }
+    }
+
+    .footer{
+        .businessHours{
+            .hours{
+                width: 80%;
+            }
+        }
+    }
+}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) { }
+@media (min-width: 768px) { }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+
     .header{
-        
+        .scrollButton{
+            bottom: 10vh;
+        }
+    }
+
+    .headerImage{
+        height: 105vh;
+        color: $primary;
+        background-position: bottom;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    }
+
+    .homePageSection{
         .headerImage{
-            height: 100vh;
-            background-position: bottom;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+            height: 80vh;
+        }
+    }
+
+    .homepage{
+        height: 70vh;
+
+        .container{
+            margin:-5vh auto auto;
+            max-width: 80%;
+            height: 80vh;
+
+            .topSection ,.bottomSection{
+                height: 50%;
+                
+                .aboutUsText{
+                    padding: 1em;
+
+                    h3{
+                        font-size: 2.5em;
+                        font-style: italic;
+                        font-weight: 900;
+                        margin-bottom: none;
+                    }
+                }
+            }
+
+            .topSection{
+                button{
+                    padding: .5em;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .bottomSection{
+                .image{
+                    background-position:  bottom ;
+                }
+            }
+        }
+
+        p{
+            margin-left: 2em;
+            margin-right: 2em;
+            font-size: 1.2rem;
         }
     }
 
@@ -303,4 +676,80 @@ span:nth-child(2){
             }
         }
     }
+
+    .team{
+
+        .carousel-item{
+            grid-template-columns: minmax(150px, 50%) 1fr;
+
+            .carouselText{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+
+                height: 80%;
+                margin: auto;
+
+                .card-title{
+                    font-size: 2.5em;
+                    font-style: italic;
+                    font-weight: 900;
+                    margin-bottom: none;
+                }
+
+                .card-text{
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    .contact{
+        height: 70vh;
+        margin-top: 10vh;
+        
+        .formNumbers{
+            display: flex;
+            
+            .form-group{
+                width: 50%;
+                padding-bottom: 0;
+
+                &:nth-child(1){
+                    margin-right: .5em;
+                }
+            }
+        }
+    }
+
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        .businessHours{
+            .hours{
+                width: 70%;
+            }
+        }
+        
+    }
+}
+
+@keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
 }
