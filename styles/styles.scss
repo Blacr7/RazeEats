@@ -1,11 +1,11 @@
 //--------------------------------VARIABLES-------------
 
-$primary: #edebd7;
+$primary:#edebd7;
 $secondary: #e5b21d;
 $tertiary: #423E37;
 $quaternary: #6E675F;
 $homepagePrimary: #343A40;
-$homepageSecondary: #eeeeee; //#E2EADF;
+$homepageSecondary: #E2EADF;
 //----------------------------END VARIABLES-------------
 
 //------------------------UNIVERSAL ELEMENTS------------------------------
@@ -85,19 +85,17 @@ body{
 
 .headerImage{
     width:100%;
-    background-position: center ;
+    background-position: right ;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+    
+    display: grid;
+    align-items: center;
     text-align: center;
     position: relative;
-    height: 70vh;
+    height: 80vh;
     
     .headerImageText{
         color: $primary;
@@ -105,6 +103,7 @@ body{
         font-weight: 900;
         font-style: italic;
     }
+
 }
 
 
@@ -119,7 +118,7 @@ body{
             height: 100%;
 
             .food{
-                height: 100%;
+                width: 100%;
             }
         }
     }
@@ -128,6 +127,24 @@ body{
         display: grid;
     }
 
+    .carousel-control{
+        height: 100%;
+        background-color: $homepagePrimary;
+        z-index: 3;
+    }
+    
+    .carousel-indicators{
+        z-index: 1;
+    }
+
+    .carousel-inner{
+        z-index: 0;
+    }
+
+    .container{
+        max-width: unset;
+    }
+    
     .team{
 
         .carousel-item{
@@ -135,7 +152,8 @@ body{
 
             .carouselText{
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
+                height: 100%;
                 align-items: center;
                 flex-wrap: wrap;
 
@@ -143,14 +161,18 @@ body{
                     font-size: 2em;
                     font-style: italic;
                     font-weight: 900;
-                    margin-bottom: none;
-                    margin-top: 1em;
+                    margin-bottom: 1rem;
                 }
 
                 .card-text{
                     text-align: justify;
-                    margin: auto 2em;
+                    margin: auto 2.5em;
                     font-size: 1.2rem;
+
+                    p{
+                        justify-content: space-around;
+                        line-height: 2em;
+                    }
                 }
             }
         }
@@ -178,22 +200,10 @@ body{
             
         }
     }
-
-    .carousel-control{
-        height: 100%;
-    }
-    
-    .carousel-indicators{
-        z-index: 1;
-    }
-    .carousel-inner{
-        z-index: 0;
-    }
 }
 
 .footer{
     min-height: 50vh;
-
     padding: 1em 0;
     background-color: $homepagePrimary;
     color: $primary;
@@ -272,21 +282,27 @@ span:nth-child(2){
 }
 
 .card{
-    color: #ffffff;
-
+    color: $primary;
     box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 14px;
+
     .card-body, .card-header{
-        background: #343A40;
+        background: $homepagePrimary;
 
         .card-title{
+            color: white;
             text-align: center;
         }
+    }
 
-        .card-text{
-            color: $primary;
-        }
+    .text{
+        color: $homepageSecondary;
+
+    }
+    
+    .form-control{
+        color: $tertiary;
     }
 }
 
@@ -313,6 +329,7 @@ span:nth-child(2){
 
         .topSection, .bottomSection{
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
             height: 50%;
 
             .image{
@@ -328,16 +345,20 @@ span:nth-child(2){
                 place-items: center;
                 text-align: center;
                 
+                h3{
+                    font-size: 2em;
+                }
 
                 p{
                     margin: 0 1em;
+                    color: $homepageSecondary;
+                    line-height: 2rem;
+                    text-align: left;
                 }
             }
         }
 
         .topSection{
-            grid-template-columns: minmax(150px, 1fr) 60%;
-
             .image{
                 background-image: url('../images/Spices.jpg');
             }
@@ -359,7 +380,6 @@ span:nth-child(2){
         }
 
         .bottomSection{
-            grid-template-columns: minmax(150px, 40%) 1fr;
 
             .image{
                 background-image: url('https://images.unsplash.com/photo-1466027575040-12134f1397fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
@@ -377,28 +397,35 @@ span:nth-child(2){
     }
     
     p{
-        color: $homepageSecondary;
-        line-height: 2rem;
-        text-align: left;
+        
     }
 }
 
 .menu{
+    margin: 5vh auto;
     min-height: 100vh;
 
-    .container-responsive{
-        min-height: 100vh;
+    .cardDeck{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container{
+        //width: 90%;
+        max-width: unset;
     }
 
     .foodItems{
-        width: 100%;
+        margin: 1em 2em;
+            
         .card{
-            width: 80%;
+            width: 100%;
             height: 100%;
-            margin: auto;
+            
             
             .card-img-top{
-                height: 30%;
+                height: 50%;
             }
             
             .card-body{
@@ -421,16 +448,23 @@ span:nth-child(2){
         }
     }
 
-    h4{
+    h3{
+        color: white;
+        font-size: 2em;
+        margin-bottom: 2em;
+    }
+
+    h4, h3{
         text-align: center;
     }
+
 }
 
 //----------------END TOP LEVEL PAGES------------------------
 
 //-------------------LOWER LEVEL PAGES------------------------
-.contact, #orderOnline{
-    min-height: 60vh;
+.contact, .orderOnline{
+    min-height: 70vh;
 }
 
 .contact{
@@ -440,7 +474,7 @@ span:nth-child(2){
 
     .contactSeparator{
         padding-top: 1em;
-        margin: 1em 4vw;
+        margin: 5vh 4vw;
     }
 
     input, textarea{
@@ -500,8 +534,17 @@ span:nth-child(2){
     }
 }
 
-#orderOnline{
+.orderOnline{
     color: #fff;
+    display:grid;
+    align-items: center;
+    margin: 5vh auto;
+
+    .container{
+        all: unset;
+        width: 80%;
+        margin: auto;
+    }
 
     .onlineTop{
         display: flex;
@@ -521,24 +564,113 @@ span:nth-child(2){
     
 //--------------END LOWER LEVEL PAGES------------------------
 
-// Small devices (landscape phones, 576px and down)
+//--------------------------------MEDIA QUERIES-----------------
+@media (max-width: 1200px ) and (orientation: landscape){
+    .headerImage{
+        height: 100vh;
+    }
+
+    .homepage{
+        .container{
+            height: 150vh;
+        }
+
+        .team{
+
+            .carousel-item{
+                .carouselText{
+                    .card-text{
+                        margin: auto 1em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Small landscape phones and devices
+@media (max-width: 768px) and (orientation: landscape){
+
+    .headerImage{
+        height: 100vh;
+    }
+
+    .homepage{
+        .container{
+            height: 200vh;
+        }
+
+        .team{
+            .carousel-item{
+                .carouselText{
+                    .card-text{
+                        margin: auto 1em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Small devices (576px and down)
 @media (max-width: 576px){
     body{
         font-size: 16px;
     }
+
     .header{
         .scrollButton{
             bottom: 10vh;
         }
     }
+    
     .headerImage{
         height: 100vh;
+    }
+
+    .homepage{
+        .container{
+            height: 150vh;
+        }
+
+        .team{
+            height: 200vh;
+
+            .carousel-item{
+                .carouselText{
+                    .card-text{
+                        margin: auto 1em;
+                    }
+                }
+            }
+        }
     }
 }
 
 // Medium devices (tablets, 768px and down)
 @media (max-width: 768px){  
-    
+    .headerImage{
+        background-position: bottom;
+        background-size: cover;
+        color: $primary;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .menu{
+        .cardDeck{
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    .menu ~ .carousel{
+        .container{
+            width: 100%;
+
+            .food{
+                width: 100%;
+            }
+        }
+    }
+
     .carousel{
         .team{
             .carousel-item{
@@ -566,8 +698,16 @@ span:nth-child(2){
                 grid-template-columns: 1fr;
                 height: 50%;
 
+                .aboutUsText{
+                    position: absolute;
+                    background-color: transparent;
+                    z-index: 2;
+                    height: 100%;
+                }
+
                 .image{
-                    display: none;
+                    opacity: .5;
+                    background-position: bottom center;
                 }
             }
         }
@@ -592,6 +732,10 @@ span:nth-child(2){
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 
+    .container{
+        max-width: unset;
+    }
+
     .header{
         .scrollButton{
             bottom: 10vh;
@@ -599,10 +743,12 @@ span:nth-child(2){
     }
 
     .headerImage{
-        height: 105vh;
-        color: $primary;
         background-position: bottom;
+        background-size: cover;
         background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+        color: $primary;
+        height: 105vh;
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .homePageSection{
@@ -617,19 +763,26 @@ span:nth-child(2){
         .container{
             margin:-5vh auto auto;
             max-width: 80%;
-            height: 80vh;
+            min-height: 90vh;
 
             .topSection ,.bottomSection{
                 height: 50%;
-                
+                grid-template-columns: minmax(150px, 1fr) 50%;
+
                 .aboutUsText{
                     padding: 1em;
 
                     h3{
-                        font-size: 2.5em;
+                        font-size: 2em;
                         font-style: italic;
                         font-weight: 900;
                         margin-bottom: none;
+                    }
+                    
+                    p{
+                        margin-left: 2em;
+                        margin-right: 2em;
+                        font-size: 1.2rem;
                     }
                 }
             }
@@ -648,22 +801,28 @@ span:nth-child(2){
             }
         }
 
-        p{
-            margin-left: 2em;
-            margin-right: 2em;
-            font-size: 1.2rem;
-        }
+        
     }
 
     .menu{
         min-height: 100vh;
-    
-        .container-responsive{
-            min-height: 100vh;
+
+        .cardDeck{
+            grid-template-columns: repeat(3, 1fr);
         }
-        
+
+        .container{
+            h3{
+                font-size: 2.5em;
+                font-style: italic;
+                font-weight: 900;
+                text-align: center;
+                margin: 1em;
+                color: $primary;
+            }
+        }
+
         .foodItems{
-            width: 50%;
             padding: 1em;
             .card{
                 width: 100%;
@@ -677,37 +836,57 @@ span:nth-child(2){
         }
     }
 
-    .team{
+    .menu ~ .carousel{
+        width: 100vw;
+        background-color: transparentize($homepagePrimary, .5);
+        height: 70vh;
+        margin-top: 10vh;
 
-        .carousel-item{
-            grid-template-columns: minmax(150px, 50%) 1fr;
+        .container{
+            height: 80vh;
+            margin-top: -5vh;
+            position: absolute;
+            left: -50%;
+            right: -50%;
+            width: 80%;
 
-            .carouselText{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-
-                height: 80%;
-                margin: auto;
-
-                .card-title{
-                    font-size: 2.5em;
-                    font-style: italic;
-                    font-weight: 900;
-                    margin-bottom: none;
-                }
-
-                .card-text{
-                    text-align: justify;
-                }
+            .food{
+                height: 100%;
+                width: unset;
             }
         }
     }
 
+    .carousel{
+        .team{
+            .carousel-item{
+                grid-template-columns: minmax(150px, 50%) 1fr;
+
+                .carouselText{
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    margin: auto;
+
+                    .card-title{
+                        font-size: 2.5em;
+                        font-style: italic;
+                        font-weight: 900;
+                        margin-bottom: none;
+                    }
+
+                    .card-text{
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+    
+
     .contact{
         height: 70vh;
-        margin-top: 10vh;
+        margin: 30vh auto 15vh;
         
         .formNumbers{
             display: flex;

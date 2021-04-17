@@ -1,4 +1,4 @@
-<section id="orderOnline" class="bg-dark ">
+<section id="orderOnline" class="orderOnline">
     <div class="container">
         <div class="onlineTop py-3">
             <h4>My Order</h4>
@@ -31,7 +31,7 @@
                             <td><?="$" . $currentItem['price'] * $currentItem['quantity']?></td>
                             <td>
                                 <a href="menu.php?action=delete&id=<?= $value['id']?>">
-                                    <button type="button" class="btn-danger"?>Remove</button>
+                                    <button type="button" class="btn btn-danger"?>Remove</button>
                                 </a>
                             </td>
                         </tr>
@@ -49,7 +49,7 @@
                                     if(isset($_SESSION['shoppingCart']) && !empty($_SESSION['shoppingCart']) && count($_SESSION['shoppingCart']) > 1){
                                 ?>
                                         <a href="menu.php?action=removeAll">
-                                            <button type="button" class="btn-danger">Remove All</button>
+                                            <button type="button" class="btn btn-danger">Remove All</button>
                                         </a>
                                 <?php
                                     }

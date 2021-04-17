@@ -78,12 +78,12 @@
     $result = mysqli_query($connect, $query);
 ?>
 
-<section class="menu bg-dark" id="menu">
+<section class="menu" id="menu">
     <div class="container">
 
-        <h2 class="text-white text-center pt-4">Menu</h2>
+        <h3>Menu</h3>
 
-        <div class="card-deck flex-xl-row column flex-column ">
+        <div class="cardDeck">
             <?php
                 if($result){
                     if(mysqli_num_rows($result)>0){
@@ -91,7 +91,7 @@
                         while($item = mysqli_fetch_assoc($result)){
                         ?>
                             <form target="_top" class="foodItems" method="post" action="menu.php?action=add&id=<?=$item['id']; ?>" >
-                                <div class="card my-3">
+                                <div class="card">
                                     <img class="card-img-top" src="<?= $item['Image'];?>" alt="">
                                         
                                         <div class="card-header">

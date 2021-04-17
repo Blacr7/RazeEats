@@ -75,29 +75,20 @@ body {
 
 .headerImage {
   width: 100%;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   position: relative;
-  height: 70vh;
+  height: 80vh;
 }
 
 .headerImage .headerImageText {
@@ -121,12 +112,30 @@ body {
 }
 
 .carousel .carousel-inner .carousel-item .food {
-  height: 100%;
+  width: 100%;
 }
 
 .carousel .carousel-item-next, .carousel .carousel-item-prev, .carousel .carousel-item.active {
   display: -ms-grid;
   display: grid;
+}
+
+.carousel .carousel-control {
+  height: 100%;
+  background-color: #343A40;
+  z-index: 3;
+}
+
+.carousel .carousel-indicators {
+  z-index: 1;
+}
+
+.carousel .carousel-inner {
+  z-index: 0;
+}
+
+.carousel .container {
+  max-width: unset;
 }
 
 .carousel .team .carousel-item {
@@ -138,9 +147,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -152,14 +161,19 @@ body {
   font-size: 2em;
   font-style: italic;
   font-weight: 900;
-  margin-bottom: none;
-  margin-top: 1em;
+  margin-bottom: 1rem;
 }
 
 .carousel .team .carousel-item .carouselText .card-text {
   text-align: justify;
-  margin: auto 2em;
+  margin: auto 2.5em;
   font-size: 1.2rem;
+}
+
+.carousel .team .carousel-item .carouselText .card-text p {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  line-height: 2em;
 }
 
 .carousel .team .img {
@@ -179,18 +193,6 @@ body {
 
 .carousel .team .imgThree {
   background-image: url("https://images.unsplash.com/photo-1532635211-8ec15f2ce05c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
-}
-
-.carousel .carousel-control {
-  height: 100%;
-}
-
-.carousel .carousel-indicators {
-  z-index: 1;
-}
-
-.carousel .carousel-inner {
-  z-index: 0;
 }
 
 .footer {
@@ -286,7 +288,7 @@ span:nth-child(2) {
 }
 
 .card {
-  color: #ffffff;
+  color: #edebd7;
   -webkit-box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
           box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
   border: none;
@@ -298,11 +300,16 @@ span:nth-child(2) {
 }
 
 .card .card-body .card-title, .card .card-header .card-title {
+  color: white;
   text-align: center;
 }
 
-.card .card-body .card-text, .card .card-header .card-text {
-  color: #edebd7;
+.card .text {
+  color: #E2EADF;
+}
+
+.card .form-control {
+  color: #423E37;
 }
 
 .homepage {
@@ -316,7 +323,7 @@ span:nth-child(2) {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  color: #eeeeee;
+  color: #E2EADF;
 }
 
 .homepage .container {
@@ -332,6 +339,8 @@ span:nth-child(2) {
 .homepage .container .topSection, .homepage .container .bottomSection {
   display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
   height: 50%;
 }
 
@@ -350,13 +359,15 @@ span:nth-child(2) {
   text-align: center;
 }
 
-.homepage .container .topSection .aboutUsText p, .homepage .container .bottomSection .aboutUsText p {
-  margin: 0 1em;
+.homepage .container .topSection .aboutUsText h3, .homepage .container .bottomSection .aboutUsText h3 {
+  font-size: 2em;
 }
 
-.homepage .container .topSection {
-  -ms-grid-columns: minmax(150px, 1fr) 60%;
-      grid-template-columns: minmax(150px, 1fr) 60%;
+.homepage .container .topSection .aboutUsText p, .homepage .container .bottomSection .aboutUsText p {
+  margin: 0 1em;
+  color: #E2EADF;
+  line-height: 2rem;
+  text-align: left;
 }
 
 .homepage .container .topSection .image {
@@ -364,7 +375,7 @@ span:nth-child(2) {
 }
 
 .homepage .container .topSection .btn {
-  color: #eeeeee;
+  color: #E2EADF;
   border: 2px solid;
   font-weight: 700;
   font-size: 1em;
@@ -375,13 +386,8 @@ span:nth-child(2) {
 
 .homepage .container .topSection .btn:hover {
   cursor: pointer;
-  background: #eeeeee;
+  background: #E2EADF;
   color: #343A40;
-}
-
-.homepage .container .bottomSection {
-  -ms-grid-columns: minmax(150px, 40%) 1fr;
-      grid-template-columns: minmax(150px, 40%) 1fr;
 }
 
 .homepage .container .bottomSection .image {
@@ -397,32 +403,34 @@ span:nth-child(2) {
   height: 100%;
 }
 
-.homepage p {
-  color: #eeeeee;
-  line-height: 2rem;
-  text-align: left;
-}
-
 .menu {
+  margin: 5vh auto;
   min-height: 100vh;
 }
 
-.menu .container-responsive {
-  min-height: 100vh;
+.menu .cardDeck {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.menu .container {
+  max-width: unset;
 }
 
 .menu .foodItems {
-  width: 100%;
+  margin: 1em 2em;
 }
 
 .menu .foodItems .card {
-  width: 80%;
+  width: 100%;
   height: 100%;
-  margin: auto;
 }
 
 .menu .foodItems .card .card-img-top {
-  height: 30%;
+  height: 50%;
 }
 
 .menu .foodItems .card .card-body {
@@ -454,12 +462,18 @@ span:nth-child(2) {
       align-self: center;
 }
 
-.menu h4 {
+.menu h3 {
+  color: white;
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+
+.menu h4, .menu h3 {
   text-align: center;
 }
 
-.contact, #orderOnline {
-  min-height: 60vh;
+.contact, .orderOnline {
+  min-height: 70vh;
 }
 
 .contact {
@@ -467,43 +481,43 @@ span:nth-child(2) {
   display: grid;
   -ms-grid-columns: (2)[1fr];
       grid-template-columns: repeat(1fr, 2);
-  color: #eeeeee;
+  color: #E2EADF;
 }
 
 .contact .contactSeparator {
   padding-top: 1em;
-  margin: 1em 4vw;
+  margin: 5vh 4vw;
 }
 
 .contact input, .contact textarea {
   background-color: #343A40;
-  color: #eeeeee;
+  color: #E2EADF;
   border-color: #343A40;
 }
 
 .contact input::-webkit-input-placeholder, .contact input:focus, .contact textarea::-webkit-input-placeholder, .contact textarea:focus {
-  color: #eeeeee;
+  color: #E2EADF;
   background-color: #343A40;
 }
 
 .contact input:-ms-input-placeholder, .contact input:focus, .contact textarea:-ms-input-placeholder, .contact textarea:focus {
-  color: #eeeeee;
+  color: #E2EADF;
   background-color: #343A40;
 }
 
 .contact input::-ms-input-placeholder, .contact input:focus, .contact textarea::-ms-input-placeholder, .contact textarea:focus {
-  color: #eeeeee;
+  color: #E2EADF;
   background-color: #343A40;
 }
 
 .contact input::placeholder, .contact input:focus, .contact textarea::placeholder, .contact textarea:focus {
-  color: #eeeeee;
+  color: #E2EADF;
   background-color: #343A40;
 }
 
 .contact input:-webkit-autofill {
   background-color: #343A40;
-  color: #eeeeee;
+  color: #E2EADF;
   border-color: #343A40;
 }
 
@@ -544,11 +558,23 @@ span:nth-child(2) {
   margin-bottom: 2em auto;
 }
 
-#orderOnline {
+.orderOnline {
   color: #fff;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5vh auto;
 }
 
-#orderOnline .onlineTop {
+.orderOnline .container {
+  all: unset;
+  width: 80%;
+  margin: auto;
+}
+
+.orderOnline .onlineTop {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -561,12 +587,36 @@ span:nth-child(2) {
           justify-content: space-between;
 }
 
-#orderOnline .orderNow {
+.orderOnline .orderNow {
   text-align: center;
 }
 
-#orderOnline .table {
+.orderOnline .table {
   margin-bottom: 0;
+}
+
+@media (max-width: 1200px) and (orientation: landscape) {
+  .headerImage {
+    height: 100vh;
+  }
+  .homepage .container {
+    height: 150vh;
+  }
+  .homepage .team .carousel-item .carouselText .card-text {
+    margin: auto 1em;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .headerImage {
+    height: 100vh;
+  }
+  .homepage .container {
+    height: 200vh;
+  }
+  .homepage .team .carousel-item .carouselText .card-text {
+    margin: auto 1em;
+  }
 }
 
 @media (max-width: 576px) {
@@ -579,9 +629,35 @@ span:nth-child(2) {
   .headerImage {
     height: 100vh;
   }
+  .homepage .container {
+    height: 150vh;
+  }
+  .homepage .team {
+    height: 200vh;
+  }
+  .homepage .team .carousel-item .carouselText .card-text {
+    margin: auto 1em;
+  }
 }
 
 @media (max-width: 768px) {
+  .headerImage {
+    background-position: bottom;
+    background-size: cover;
+    color: #edebd7;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .menu .cardDeck {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .menu ~ .carousel .container {
+    width: 100%;
+  }
+  .menu ~ .carousel .container .food {
+    width: 100%;
+  }
   .carousel .team .carousel-item {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -603,8 +679,15 @@ span:nth-child(2) {
         grid-template-columns: 1fr;
     height: 50%;
   }
+  .homepage .container .topSection .aboutUsText, .homepage .container .bottomSection .aboutUsText {
+    position: absolute;
+    background-color: transparent;
+    z-index: 2;
+    height: 100%;
+  }
   .homepage .container .topSection .image, .homepage .container .bottomSection .image {
-    display: none;
+    opacity: .5;
+    background-position: bottom center;
   }
   .homepage h3 {
     font-size: 2em;
@@ -615,15 +698,21 @@ span:nth-child(2) {
 }
 
 @media (min-width: 1200px) {
+  .container {
+    max-width: unset;
+  }
   .header .scrollButton {
     bottom: 10vh;
   }
   .headerImage {
-    height: 105vh;
-    color: #edebd7;
     background-position: bottom;
+    background-size: cover;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.3))), url("https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    color: #edebd7;
+    height: 105vh;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
   }
   .homePageSection .headerImage {
     height: 80vh;
@@ -634,19 +723,26 @@ span:nth-child(2) {
   .homepage .container {
     margin: -5vh auto auto;
     max-width: 80%;
-    height: 80vh;
+    min-height: 90vh;
   }
   .homepage .container .topSection, .homepage .container .bottomSection {
     height: 50%;
+    -ms-grid-columns: minmax(150px, 1fr) 50%;
+        grid-template-columns: minmax(150px, 1fr) 50%;
   }
   .homepage .container .topSection .aboutUsText, .homepage .container .bottomSection .aboutUsText {
     padding: 1em;
   }
   .homepage .container .topSection .aboutUsText h3, .homepage .container .bottomSection .aboutUsText h3 {
-    font-size: 2.5em;
+    font-size: 2em;
     font-style: italic;
     font-weight: 900;
     margin-bottom: none;
+  }
+  .homepage .container .topSection .aboutUsText p, .homepage .container .bottomSection .aboutUsText p {
+    margin-left: 2em;
+    margin-right: 2em;
+    font-size: 1.2rem;
   }
   .homepage .container .topSection button {
     padding: .5em;
@@ -655,19 +751,22 @@ span:nth-child(2) {
   .homepage .container .bottomSection .image {
     background-position: bottom;
   }
-  .homepage p {
-    margin-left: 2em;
-    margin-right: 2em;
-    font-size: 1.2rem;
-  }
   .menu {
     min-height: 100vh;
   }
-  .menu .container-responsive {
-    min-height: 100vh;
+  .menu .cardDeck {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .menu .container h3 {
+    font-size: 2.5em;
+    font-style: italic;
+    font-weight: 900;
+    text-align: center;
+    margin: 1em;
+    color: #edebd7;
   }
   .menu .foodItems {
-    width: 50%;
     padding: 1em;
   }
   .menu .foodItems .card {
@@ -678,37 +777,51 @@ span:nth-child(2) {
   .menu .foodItems .card .card-img-top {
     height: 50%;
   }
-  .team .carousel-item {
+  .menu ~ .carousel {
+    width: 100vw;
+    background-color: rgba(52, 58, 64, 0.5);
+    height: 70vh;
+    margin-top: 10vh;
+  }
+  .menu ~ .carousel .container {
+    height: 80vh;
+    margin-top: -5vh;
+    position: absolute;
+    left: -50%;
+    right: -50%;
+    width: 80%;
+  }
+  .menu ~ .carousel .container .food {
+    height: 100%;
+    width: unset;
+  }
+  .carousel .team .carousel-item {
     -ms-grid-columns: minmax(150px, 50%) 1fr;
         grid-template-columns: minmax(150px, 50%) 1fr;
   }
-  .team .carousel-item .carouselText {
+  .carousel .team .carousel-item .carouselText {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    height: 80%;
     margin: auto;
   }
-  .team .carousel-item .carouselText .card-title {
+  .carousel .team .carousel-item .carouselText .card-title {
     font-size: 2.5em;
     font-style: italic;
     font-weight: 900;
     margin-bottom: none;
   }
-  .team .carousel-item .carouselText .card-text {
+  .carousel .team .carousel-item .carouselText .card-text {
     text-align: justify;
   }
   .contact {
     height: 70vh;
-    margin-top: 10vh;
+    margin: 30vh auto 15vh;
   }
   .contact .formNumbers {
     display: -webkit-box;

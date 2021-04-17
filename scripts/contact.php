@@ -39,6 +39,5 @@
             <div class="form-group submit"><input class="form-control" type="submit" value="Submit"></div>
         </form>
     </div>
-    <div class="contactSeparator"></div>
     
 </section>
